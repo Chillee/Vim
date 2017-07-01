@@ -259,7 +259,7 @@ class MoveDownFoldFix extends MoveByScreenLineMaintainDesiredColumn {
     do {
       t = <Position>await new MoveDownByScreenLine().execAction(position, vimState);
       count += 1;
-    } while (t.line === position.line);
+    } while (t.line === position.line && count < 5);
     if (t.line > position.line + 1) {
       return t;
     }
@@ -339,7 +339,7 @@ class MoveUpFoldFix extends MoveByScreenLineMaintainDesiredColumn {
         vimState
       );
       count += 1;
-    } while (t.line === position.line);
+    } while (t.line === position.line && count < 5);
     vimState.desiredColumn = prevDesiredColumn;
     if (t.line < position.line - 1) {
       return t;
